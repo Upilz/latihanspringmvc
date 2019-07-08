@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1"> </meta>
+<title>List Brand</title>
+</head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<body>
+
+<div th:if="${message}" class="alert alert-success" role="alert">
+	<p th:text ="${message}"> success message </p>
+</div>
+
+<table>
+		<tr>
+			<th>ID Brand</th>
+			<th>Name</th>
+			<th>Product_Type</th>
+			<th>Action</th>
+			
+		</tr>
+		<tr th:each="brand : ${Brandlist}">
+			<td th:text="${brand.id}"></td>
+			<td th:text="${brand.name}"></td>
+			<td th:text="${brand.product_type}"></td>
+			<td> <a th:href="${'/brand/edit/' + brand.id}">Edit</a>
+			<a th:href="${'/brand/delete/' + brand.id}">Delete</a> </td>
+		</tr>
+	</table>
+
+</body>
+</html>
